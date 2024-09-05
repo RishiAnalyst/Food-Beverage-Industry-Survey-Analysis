@@ -53,10 +53,10 @@ The dashboard consists of 17 visuals spread across 3 pages, including:
 Additionally, navigation buttons and slicers were incorporated for improved interactivity and user experience.
 
 ## Key Insights
-1. ### Demographics: 60.38% of respondents are male, with more than 50% in the 19-30 age group.
-2. ### Consumption Patterns: Most respondents consume products 2-3 times a week, mainly for concentration during work/study and pre-exercise.
-3. ### Brand Preference: Coca-Cola is the most preferred brand, while brand reputation is the primary factor for brand selection.
-4. ### Health and Taste Preferences: Respondents prefer products with reduced sugar and more natural ingredients. The average taste rating is around 3.32 to 3.34.
+1.  Demographics: 60.38% of respondents are male, with more than 50% in the 19-30 age group.
+2.  Consumption Patterns: Most respondents consume products 2-3 times a week, mainly for concentration during work/study and pre-exercise.
+3.  Brand Preference: Coca-Cola is the most preferred brand, while brand reputation is the primary factor for brand selection.
+4.  Health and Taste Preferences: Respondents prefer products with reduced sugar and more natural ingredients. The average taste rating is around 3.32 to 3.34.
 
 ## Recommendations
 1. Enhance health perception by promoting natural ingredients and health benefits.
