@@ -15,41 +15,45 @@ The main objective of this project is to:
 ## Data Source
 The dataset used for this analysis contains survey responses from 10,000 individuals, including demographic information, consumption habits, brand perceptions, and preferences.
 
-### Tables Used:
-- Fact Table: fact_survey_responses
-    - Response_ID: Unique identifier for each survey response.
-    - Respondent_ID: Unique identifier for each respondent.
-    - Consume_frequency, Consume_reason, Brand_perception, etc.
-- Dimension Tables:
-    - dim_respondents: Respondent_ID, Name, Age, Gender, City_ID.
-    - dim_cities: City_ID, City, Tier.
-
 ## Data Cleaning
 Data cleaning was performed using Power Query, with key steps including:
-- Correcting spelling errors and standardizing values for consistency.
-- Renaming columns for better visualization and understanding.
-- Checking for null values and handling errors appropriately.
+- Corrected spelling errors and standardised values for consistency.
+- Renamed columns for better visualization and understanding.
+- Checked for null values, duplicates and handled errors appropriately.
 
 ## Data Modeling
+
+![Screenshot (336)](https://github.com/user-attachments/assets/7844ec1b-3a12-4a0c-9baa-cfd2a3ec9a07)
+
 - The fact_survey_responses table was connected to the dim_respondents table using the Respondent_ID column.
 - The dim_respondents table was connected to the dim_cities table using the City_ID column.
 
 ## New Measures Created
 Five new measures were created for use in card visuals, including:
-- Total Male Respondents
-- Total Female Respondents
-  % Male Respondents
-- % Female Respondents
+- Total Respondents
+     ```
+   Total Respondents = COUNTROWS(fact_survey_responses_cleaned) 
+     ```
+- Total Count of Female and Male
+     ```
+   Female = CALCULATE(COUNTROWS(fact_survey_responses_cleaned),dim_repondents[Gender]="Female")
+   Male = CALCULATE(COUNTROWS(fact_survey_responses_cleaned),dim_repondents[Gender]="Male")
+     ```
+- Percentage of Female and male Respondents.
+     ```
+   % male = DIVIDE([male],[Total Respondents],0)
+   % female = DIVIDE([Female],[Total Respondents],0)
+     ```
+- 
 These measures were also included in tooltips for relevant visuals.
 
 ## Dashboard Overview
-The dashboard consists of 17 visuals spread across 3 pages, including:
+The dashboard consists of 11 visuals spread across 2 pages, including:
 - Column Chart
 - Stacked Bar Chart
 - Pie Chart
 - Donut Chart
 - Treemap Chart
-- Table
 - Card Visuals
 
 Additionally, navigation buttons and slicers were incorporated for improved interactivity and user experience.
@@ -59,13 +63,18 @@ Additionally, navigation buttons and slicers were incorporated for improved inte
 
 ### **Page 1: Overview of Respondent Demographics and Preferences**
 
-![Screenshot (237)](https://github.com/user-attachments/assets/025fcd6c-49c9-41b2-90f3-374b102242bc)
+![Screenshot (337)](https://github.com/user-attachments/assets/facec947-9383-4b99-ac56-b897037219b4)
 
 - **Total Respondents**:  
   - **10,000 participants** in the survey.  
   - **Male respondents**: **60.38% (6,038)**.  
   - **Female respondents**: **34.55% (3,455)**.  
   - **Non-binary respondents**: **5%**, an underexplored group for inclusivity.
+
+- **Current Brands and Perception**:  
+  - **Coca-Cola**: Most popular with **2.54K positive sentiments**.  
+  - **Pepsi**: Following Coca-Cola with **2.11K positive sentiments**.  
+  - **Smaller brands (Blue Bull, Sky 9)**: Neutral or negative reception, indicating a need for better positioning.
 
 - **General Perception of Food & Beverage Products**:  
   - **Effective (2.9K respondents)** – Trust in the product's benefits.  
@@ -88,13 +97,8 @@ Additionally, navigation buttons and slicers were incorporated for improved inte
 ### **Page 2: Brand Perceptions, Awareness, and Preferences**
 
 
-![Screenshot (239)](https://github.com/user-attachments/assets/ded5d462-78b9-47e4-8be2-fa6bd81da18c)
+![Screenshot (338)](https://github.com/user-attachments/assets/e3222792-435f-4eaf-85a8-2ad48fb62a04)
 
-
-- **Current Brands and Perception**:  
-  - **Coca-Cola**: Most popular with **2.54K positive sentiments**.  
-  - **Pepsi**: Following Coca-Cola with **2.11K positive sentiments**.  
-  - **Smaller brands (Blue Bull, Sky 9)**: Neutral or negative reception, indicating a need for better positioning.
 
 - **Brand Awareness**:  
   - **Coca-Cola & Pepsi**: Widely recognized by **1.1K+ respondents**.  
@@ -108,29 +112,14 @@ Additionally, navigation buttons and slicers were incorporated for improved inte
   - **Portable cans** (39.84%) and **innovative designs** (30.47%) dominate.  
   - **Eco-friendly packaging**: Limited preference (9.83%), but room for improvement.
 
-- **Limited Edition Packaging**:  
-  - **39.46%** interested in limited edition packaging.  
-  - **20.31% unsure**, signaling an opportunity to educate consumers on exclusivity.
-
 - **Desired Product Improvements**:  
   - **Reduced sugar content**: **3K respondents**.  
   - **More natural ingredients**: **2.5K respondents**.  
   - **Wider product range**: **2.04K respondents**.
 
----
-
-### **Page 3: Product Consumption Patterns**
-
-![Screenshot (238)](https://github.com/user-attachments/assets/74468faa-774b-4fce-bab7-7f115d177a1c)
-
-
 - **Product Consumption Frequency**:  
   - **Most common**: **2-3 times a week (3.4K respondents)** – Moderate but consistent consumption.  
   - **Least popular**: **Daily (1.35K respondents)** and **Once a week (1.6K respondents)** – Daily consumption is less common.
-
-- **Primary Reasons for Consumption**:  
-  - **Energy and focus**: **3.6K respondents** use products primarily for energy.  
-  - **Performance boost**: Less significant, indicating a niche need.
 
 - **Consumption Situations**:  
   - **Sports/Exercise**: **4.5K respondents** – Strong association with physical activity.  
@@ -207,11 +196,6 @@ Additionally, navigation buttons and slicers were incorporated for improved inte
 ## Tools Used
 - Power BI: For data visualization and dashboard creation.
 - Power Query: For data cleaning and transformation.
-
-## Project Files
-- Power BI File (.pbix): Contains all data transformations, visuals, and analysis.
-- Presentation File (.pptx): Summary of insights, key trends, and recommendations from the project.
-- Explanation : Walkthrough of the analysis and insights.
 
 ## Conclusion
 This project provided a comprehensive analysis of consumer behavior and preferences in the food and beverage industry, offering valuable insights for enhancing product offerings and marketing strategies. By leveraging data analytics tools such as Power BI, we were able to derive actionable recommendations to support decision-making processes.
